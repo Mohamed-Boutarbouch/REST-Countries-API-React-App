@@ -3,7 +3,8 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 // const URL = 'https://restcountries.com/v3.1/all';
-const URL = 'https://restcountries.com/v3.1/currency/dollar';
+// const URL = 'https://restcountries.com/v3.1/currency/dollar';
+const URL = 'https://restcountries.com/v3.1/name/united';
 
 const initialState = {
   countries: [],

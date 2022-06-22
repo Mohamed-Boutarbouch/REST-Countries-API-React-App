@@ -1,9 +1,12 @@
-import React from 'react'
+import React from 'react';
+import { useLocation } from 'react-router-dom';
 
 const CountryDetailsPage = () => {
-  return (
-    <div>CountryDetailsPage</div>
-  )
-}
+  const location = useLocation();
+  const { country } = location.state;
 
-export default CountryDetailsPage
+  console.log(country);
+  return <div className="mt-40">gg</div>;
+};
+
+export default CountryDetailsPage;
