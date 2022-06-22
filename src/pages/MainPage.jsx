@@ -1,9 +1,12 @@
-import React from 'react'
+import React from 'react';
+import Control from '../components/Control/Control';
 
 const MainPage = () => {
   return (
-    <div>MainPage</div>
-  )
-}
+    <main>
+      <Control />
+    </main>
+  );
+};
 
-export default MainPage
+export default MainPage;
