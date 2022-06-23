@@ -2,7 +2,7 @@ export const Search = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      className="h-6 w-6 fill-darkGray dark:whiteTXT"
+      className="h-6 w-6 dark:fill-whiteTXT "
       viewBox="0 0 20 20"
       fill="currentColor"
     >
@@ -19,7 +19,7 @@ export const Back = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      className="h-5 w-5"
+      className="h-5 w-5 dark:fill-whiteTXT "
       viewBox="0 0 20 20"
       fill="currentColor"
     >
@@ -32,11 +32,15 @@ export const Back = () => {
   );
 };
 
-export const ChevronUp = () => {
+export const ChevronUp = ({ isOpen }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      className="h-5 w-5"
+      className={`"h-5 w-5 dark:fill-whiteTXT pointer-events-none ${
+        isOpen
+          ? 'rotate-360 transition duration-400 ease-in-out'
+          : 'rotate-180 transition duration-400 ease-in-out'
+      }"`}
       viewBox="0 0 20 20"
       fill="currentColor"
     >
