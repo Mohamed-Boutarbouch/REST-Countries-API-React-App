@@ -65,3 +65,68 @@ export const Moon = () => {
     </svg>
   );
 };
+
+export const LoadingLightTheme = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      xlinkHref="http://www.w3.org/1999/xlink"
+      style={{ margin: 'auto', background: 'none', display: 'block', shapeRendering: 'auto' }}
+      width="237px"
+      height="237px"
+      viewBox="0 0 100 100"
+      preserveAspectRatio="xMidYMid"
+    >
+      <circle
+        cx="50"
+        cy="50"
+        fill="none"
+        stroke="#111517"
+        strokeWidth="6"
+        r="20"
+        strokeDasharray="94.24777960769379 33.41592653589793"
+      >
+        <animateTransform
+          attributeName="transform"
+          type="rotate"
+          repeatCount="indefinite"
+          dur="0.5319148936170213s"
+          values="0 50 50;360 50 50"
+          keyTimes="0;1"
+        />
+      </circle>
+    </svg>
+  );
+};
+export const LoadingDarkTheme = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      xlinkHref="http://www.w3.org/1999/xlink"
+      style={{ margin: 'auto', background: 'none', display: 'block', shapeRendering: 'auto' }}
+      width="237px"
+      height="237px"
+      viewBox="0 0 100 100"
+      preserveAspectRatio="xMidYMid"
+    >
+      <circle
+        cx="50"
+        cy="50"
+        fill="none"
+        stroke="#ffffff"
+        strokeWidth="6"
+        r="20"
+        strokeDasharray="94.24777960769379 33.41592653589793"
+      >
+        <animateTransform
+          attributeName="transform"
+          type="rotate"
+          repeatCount="indefinite"
+          dur="0.5319148936170213s"
+          values="0 50 50;360 50 50"
+          keyTimes="0;1"
+        />
+      </circle>
+    </svg>
+  );
+};

@@ -1,13 +1,16 @@
 /* eslint-disable no-param-reassign */
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk, current } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-// const URL = 'https://restcountries.com/v3.1/all';
+const URL = 'https://restcountries.com/v3.1/all';
 // const URL = 'https://restcountries.com/v3.1/currency/dollar';
-const URL = 'https://restcountries.com/v3.1/name/united';
+// const URL = 'https://restcountries.com/v3.1/name/united';
 
 const initialState = {
   countries: [],
+  allRegions: [],
+  filterByRegion: [],
+  searchInput: '',
   loading: false,
   error: null,
 };
@@ -25,7 +28,24 @@ const countriesSlice = createSlice({
   name: 'countries',
   initialState,
   reducers: {
-    gg(state, { payload }) {},
+    searchInputHandler(state, { payload }) {
+      state.searchInput = payload;
+    },
+
+    filterRegion(state, { payload }) {
+      const filterOptions = current(state)
+        .allRegions.filter((region) => region === payload)
+        .toString();
+
+      if (payload === filterOptions) {
+        const specificRegion = current(state).countries.filter(
+          (country) => country.region === payload,
+        );
+        state.filterByRegion = specificRegion;
+      } else {
+        state.filterByRegion = state.countries;
+      }
+    },
   },
 
   extraReducers(builder) {
@@ -33,9 +53,9 @@ const countriesSlice = createSlice({
       state.loading = true;
     });
     builder.addCase(fetchCountries.fulfilled, (state, { payload }) => {
-      // Add user to the state array
-      // state.entities.push(action.payload);
       state.countries = payload;
+      state.filterByRegion = payload;
+      state.allRegions = ['All Regions', ...new Set(payload.map((country) => country.region))];
       state.loading = false;
       state.error = false;
     });
@@ -46,6 +66,6 @@ const countriesSlice = createSlice({
   },
 });
 
-export const { gg } = countriesSlice.actions;
+export const { filterRegion, searchInputHandler } = countriesSlice.actions;
 export const selectAllCountriesState = (state) => state.countries;
 export default countriesSlice.reducer;

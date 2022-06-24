@@ -3,13 +3,20 @@
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { selectAllCountriesState } from '../../features/countriesSlice';
+import { selectThemeState } from '../../features/themeSlice';
+import { LoadingLightTheme, LoadingDarkTheme } from '../UI/Icons';
 
 const Countries = () => {
-  const { countries } = useSelector(selectAllCountriesState);
+  const { filterByRegion, searchInput, loading } = useSelector(selectAllCountriesState);
+  const { isDark } = useSelector(selectThemeState);
+
+  if (loading) {
+    return isDark ? <LoadingDarkTheme /> : <LoadingLightTheme />;
+  }
 
   return (
     <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-10">
-      {countries.map((country) => {
+      {filterByRegion.map((country) => {
         const { cca3, name, flags, population, region, capital, borders } = country;
         return (
           <div

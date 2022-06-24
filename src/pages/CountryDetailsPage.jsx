@@ -6,7 +6,7 @@ const CountryDetailsPage = () => {
   const location = useLocation();
   const { country } = location.state;
 
-  console.log(country);
+  // console.log(country);
   return (
     <>
       <BackButton />

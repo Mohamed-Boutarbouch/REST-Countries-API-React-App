@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-// import { selectCountryData, filterRegion } from '../features/countrySlice';
+import { selectAllCountriesState, filterRegion } from '../../features/countriesSlice';
 
 import { ChevronUp } from '../UI/Icons';
 
@@ -28,11 +28,9 @@ const filterByRegion = () => {
 
   const showFiltersMenu = isOpen ? '' : 'hidden';
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  // const { filterByRegion } = useSelector(selectCountryData);
-
-  // const allFilterRegions = ['All Regions', ...filterByRegion];
+  const { allRegions } = useSelector(selectAllCountriesState);
 
   return (
     <div>
@@ -48,32 +46,18 @@ const filterByRegion = () => {
       <div
         className={`bg-whiteTXT shadow-md dark:bg-darkBlue dark:text-whiteTXT flex flex-col rounded mt-1 p-2 text-sm w-44 absolute ${showFiltersMenu}`}
       >
-        {/* {allFilterRegions.map((region) => {
+        {allRegions.map((region) => {
           return (
             <button
               key={region}
               type="button"
               className="px-2 py-1 hover:bg-veryLightGray dark:hover:bg-veryDarkBlueBG rounded"
-              // onClick={() => dispatch(filterRegion(region))}
+              onClick={() => dispatch(filterRegion(region))}
             >
               {region}
             </button>
           );
-        })} */}
-        <button
-          type="button"
-          className="px-2 py-1 hover:bg-veryLightGray dark:hover:bg-veryDarkBlueBG rounded"
-          // onClick={() => dispatch(filterRegion(region))}
-        >
-          America
-        </button>{' '}
-        <button
-          type="button"
-          className="px-2 py-1 hover:bg-veryLightGray dark:hover:bg-veryDarkBlueBG rounded"
-          // onClick={() => dispatch(filterRegion(region))}
-        >
-          Africa
-        </button>
+        })}
       </div>
     </div>
   );

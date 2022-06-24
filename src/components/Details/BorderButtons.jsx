@@ -4,7 +4,7 @@ const BorderButtons = () => {
   return (
     <button
       type="button"
-      className="py-2 px-8 rounded text-VeryDarkBlueTXT dark:text-whiteTXT bg-whiteTXT dark:bg-darkBlue"
+      className="py-2 px-8 rounded text-VeryDarkBlueTXT dark:text-whiteTXT shadow-md bg-whiteTXT dark:bg-darkBlue"
     >
       Hello
     </button>
