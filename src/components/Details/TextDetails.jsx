@@ -1,16 +1,10 @@
 /* eslint-disable indent */
-import React from 'react';
+import { useSelector } from 'react-redux';
 import BorderButtons from './BorderButtons';
+import { selectAllCountriesState } from '../../features/countriesSlice';
 
 const TextDetails = ({ country }) => {
-  // const countryName = country.name.common
-  // const id = country.area
-  // const flags = country.flags.png
-  // const population = country.population
-  // const region = country.region
-  // const capital = country.capital
-
-  // console.log(country.currencies[0]);
+  const { detailOnBorders } = useSelector(selectAllCountriesState);
 
   const {
     name,
@@ -31,12 +25,10 @@ const TextDetails = ({ country }) => {
     ? Object.entries(languages).map(([k]) => languages[k])
     : '(not available)';
 
-    const tldList = tld
-    ? Object.entries(tld).map(([k]) => tld[k])
-    : '(not available)';
+  const tldList = tld ? Object.entries(tld).map(([k]) => tld[k]) : '(not available)';
 
   const convertToString = (data) => {
-    return data.toString().replace(',', ', ');
+    return data.toString().replaceAll(',', ', ');
   };
 
   return (
@@ -78,7 +70,7 @@ const TextDetails = ({ country }) => {
       </div>
 
       <div className="mt-10 flex flex-wrap items-center gap-4">
-        Border Countries:&nbsp; <BorderButtons />
+        Border Countries:&nbsp; <BorderButtons countryBorders={detailOnBorders} />
       </div>
     </div>
   );

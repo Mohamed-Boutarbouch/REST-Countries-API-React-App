@@ -98,6 +98,7 @@ export const LoadingLightTheme = () => {
     </svg>
   );
 };
+
 export const LoadingDarkTheme = () => {
   return (
     <svg

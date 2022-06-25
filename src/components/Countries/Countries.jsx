@@ -1,14 +1,22 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable no-undef */
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { selectAllCountriesState } from '../../features/countriesSlice';
+import { selectAllCountriesState, getBorderDetails } from '../../features/countriesSlice';
 import { selectThemeState } from '../../features/themeSlice';
 import { LoadingLightTheme, LoadingDarkTheme } from '../UI/Icons';
 
 const Countries = () => {
   const { filterByRegion, searchInput, loading } = useSelector(selectAllCountriesState);
   const { isDark } = useSelector(selectThemeState);
+  const dispatch = useDispatch();
+
+  const filteredCountries = filterByRegion.filter((country) => {
+    return Object.values(country.name.common)
+      .join('')
+      .toLowerCase()
+      .includes(searchInput.toLowerCase());
+  });
 
   if (loading) {
     return isDark ? <LoadingDarkTheme /> : <LoadingLightTheme />;
@@ -16,7 +24,7 @@ const Countries = () => {
 
   return (
     <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-10">
-      {filterByRegion.map((country) => {
+      {filteredCountries.map((country) => {
         const { cca3, name, flags, population, region, capital, borders } = country;
         return (
           <div
@@ -28,9 +36,7 @@ const Countries = () => {
                 src={flags.png}
                 alt={name.common}
                 className="w-full h-40 object-cover hover:cursor-pointer"
-                // onClick={() => {
-                //   navigate(`/details/${cca3}`, { state: { id: cca3 } });
-                // }}
+                onClick={() => dispatch(getBorderDetails({ cca3, borders }))}
               />
             </Link>
             <div className="m-4">

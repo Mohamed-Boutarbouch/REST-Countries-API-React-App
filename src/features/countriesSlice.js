@@ -1,15 +1,17 @@
+/* eslint-disable function-paren-newline */
+/* eslint-disable consistent-return */
+/* eslint-disable implicit-arrow-linebreak */
 /* eslint-disable no-param-reassign */
 import { createSlice, createAsyncThunk, current } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 const URL = 'https://restcountries.com/v3.1/all';
-// const URL = 'https://restcountries.com/v3.1/currency/dollar';
-// const URL = 'https://restcountries.com/v3.1/name/united';
 
 const initialState = {
   countries: [],
   allRegions: [],
   filterByRegion: [],
+  detailOnBorders: [],
   searchInput: '',
   loading: false,
   error: null,
@@ -20,7 +22,7 @@ export const fetchCountries = createAsyncThunk('countries/fetchCountries', async
     const { data } = await axios(URL);
     return data;
   } catch (error) {
-    return console.log(error.massage);
+    return error.massage;
   }
 });
 
@@ -46,6 +48,21 @@ const countriesSlice = createSlice({
         state.filterByRegion = state.countries;
       }
     },
+
+    getBorderDetails(state, { payload }) {
+      const { borders } = payload;
+      state.detailOnClick = borders;
+
+      const borderDetails = (allCountries) => {
+        if (!borders) return;
+        const extractBorderDetails = allCountries.filter((country) =>
+          borders.some((border) => border === country.cca3),
+        );
+        return extractBorderDetails;
+      };
+
+      state.detailOnBorders = borderDetails(current(state).countries);
+    },
   },
 
   extraReducers(builder) {
@@ -66,6 +83,6 @@ const countriesSlice = createSlice({
   },
 });
 
-export const { filterRegion, searchInputHandler } = countriesSlice.actions;
+export const { filterRegion, searchInputHandler, getBorderDetails } = countriesSlice.actions;
 export const selectAllCountriesState = (state) => state.countries;
 export default countriesSlice.reducer;
