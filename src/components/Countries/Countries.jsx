@@ -31,7 +31,7 @@ const Countries = () => {
             key={cca3}
             className="bg-whiteTXT rounded overflow-hidden shadow-md min-h-80 dark:bg-darkBlue dark:text-whiteTXT transition-all"
           >
-            <Link to={`/${cca3}`} state={{ country }}>
+            <Link to={`/country/${cca3}`} state={{ country }}>
               <img
                 src={flags.png}
                 alt={name.common}

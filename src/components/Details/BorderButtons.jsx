@@ -6,7 +6,7 @@ const BorderButtons = ({ countryBorders }) => {
     ? countryBorders.map((country) => {
         const { name, cca3 } = country;
         return (
-          <Link to={`/${cca3}`} state={{ country }}>
+          <Link to={`/country/${cca3}`} state={{ country }}>
             <button
               key={cca3}
               type="button"

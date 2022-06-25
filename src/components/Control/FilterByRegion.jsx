@@ -51,7 +51,7 @@ const filterByRegion = () => {
             <button
               key={region}
               type="button"
-              className="px-2 py-1 hover:bg-veryLightGray dark:hover:bg-veryDarkBlueBG rounded"
+              className="px-2 py-1 hover:bg-veryLightGray text-left pl-6 dark:hover:bg-veryDarkBlueBG rounded"
               onClick={() => dispatch(filterRegion(region))}
             >
               {region}
