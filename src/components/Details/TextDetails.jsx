@@ -1,4 +1,3 @@
-/* eslint-disable indent */
 import { useSelector } from 'react-redux';
 import BorderButtons from './BorderButtons';
 import { selectAllCountriesState } from '../../features/countriesSlice';

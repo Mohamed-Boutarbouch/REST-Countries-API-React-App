@@ -1,7 +1,3 @@
-/* eslint-disable function-paren-newline */
-/* eslint-disable consistent-return */
-/* eslint-disable implicit-arrow-linebreak */
-/* eslint-disable no-param-reassign */
 import { createSlice, createAsyncThunk, current } from '@reduxjs/toolkit';
 import axios from 'axios';
 
