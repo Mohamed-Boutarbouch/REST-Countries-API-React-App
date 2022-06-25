@@ -65,8 +65,10 @@ const countriesSlice = createSlice({
       state.loading = true;
     });
     builder.addCase(fetchCountries.fulfilled, (state, { payload }) => {
-      state.countries = payload;
-      state.filterByRegion = payload;
+      const sortedPayload = payload.sort((a, b) => a.name.common.localeCompare(b.name.common));
+
+      state.countries = sortedPayload;
+      state.filterByRegion = sortedPayload;
       state.allRegions = ['All Regions', ...new Set(payload.map((country) => country.region))];
       state.loading = false;
       state.error = false;
