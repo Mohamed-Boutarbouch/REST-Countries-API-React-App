@@ -35,18 +35,11 @@ const countriesSlice = createSlice({
     },
 
     filterRegion(state, { payload }) {
-      const filterOptions = current(state)
-        .allRegions.filter((region) => region === payload)
-        .toString();
-
-      if (payload === filterOptions) {
-        const specificRegion = current(state).countries.filter(
-          (country) => country.region === payload,
-        );
-        state.filterByRegion = specificRegion;
-      } else {
-        state.filterByRegion = state.countries;
-      }
+      const filterOptions = current(state).countries.filter((country) => {
+        if (payload === 'All Regions') return current(state).countries;
+        return country.region === payload;
+      });
+      state.filterByRegion = filterOptions;
     },
 
     getBorderDetails(state, { payload }) {

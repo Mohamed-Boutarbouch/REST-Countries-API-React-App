@@ -33,7 +33,7 @@ const filterByRegion = () => {
   const { allRegions } = useSelector(selectAllCountriesState);
 
   return (
-    <div>
+    <div className="sm:justify-self-end">
       <button
         ref={btnRef}
         type="button"

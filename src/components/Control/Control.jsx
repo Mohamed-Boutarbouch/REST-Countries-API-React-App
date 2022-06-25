@@ -4,7 +4,7 @@ import FilterByRegion from './FilterByRegion';
 
 const Control = () => {
   return (
-    <div className="flex justify-between mt-5 mb-10">
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mt-5 mb-10">
       <SearchBar />
       <FilterByRegion />
     </div>

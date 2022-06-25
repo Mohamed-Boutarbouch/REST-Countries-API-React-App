@@ -18,7 +18,7 @@ const SearchBar = () => {
   }, [searchInput]);
 
   return (
-    <section className="bg-whiteTXT text-VeryDarkBlueTXT dark:text-whiteTXT dark:bg-darkBlue shadow-md flex items-center justify-start p-2 pl-5 gap-4 rounded w-2/4 h-12">
+    <section className="bg-whiteTXT text-VeryDarkBlueTXT dark:text-whiteTXT dark:bg-darkBlue shadow-md flex items-center justify-start p-2 pl-5 gap-4 rounded w-full h-12">
       <Search />
       <input
         ref={inputRef}
