@@ -5,6 +5,7 @@ import { getBorderDetails } from '../../features/countriesSlice';
 
 const BorderButtons = ({ countryBorders }) => {
   const dispatch = useDispatch();
+
   return countryBorders
     ? countryBorders.map((country) => {
         const { name, cca3, borders } = country;

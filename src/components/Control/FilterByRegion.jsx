@@ -30,7 +30,7 @@ const filterByRegion = () => {
 
   const dispatch = useDispatch();
 
-  const { allRegions } = useSelector(selectAllCountriesState);
+  const { allRegions, filterRegionText } = useSelector(selectAllCountriesState);
 
   return (
     <div className="sm:justify-self-end">
@@ -40,7 +40,7 @@ const filterByRegion = () => {
         className="bg-whiteTXT dark:bg-darkBlue dark:text-whiteTXT shadow-md px-4 py-2 rounded flex gap-3 h-12 pt-3"
         onClick={toggleFiltersHandler}
       >
-        Filter by Region
+        {filterRegionText}
         <ChevronUp isOpen={isOpen} />
       </button>
       <div

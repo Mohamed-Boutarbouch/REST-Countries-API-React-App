@@ -13,6 +13,7 @@ const initialState = {
   filterByRegion: [],
   detailOnBorders: [],
   searchInput: '',
+  filterRegionText: 'Filter by Region',
   loading: false,
   error: null,
 };
@@ -40,6 +41,8 @@ const countriesSlice = createSlice({
         return country.region === payload;
       });
       state.filterByRegion = filterOptions;
+
+      state.filterRegionText = payload;
     },
 
     getBorderDetails(state, { payload }) {
