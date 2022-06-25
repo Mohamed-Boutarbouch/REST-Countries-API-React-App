@@ -36,7 +36,7 @@ const Countries = () => {
                 src={flags.png}
                 alt={name.common}
                 className="w-full h-40 object-cover hover:cursor-pointer"
-                onClick={() => dispatch(getBorderDetails({ cca3, borders }))}
+                onClick={() => dispatch(getBorderDetails(borders))}
               />
             </Link>
             <div className="m-4">

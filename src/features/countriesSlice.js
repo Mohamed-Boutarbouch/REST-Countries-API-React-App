@@ -50,13 +50,12 @@ const countriesSlice = createSlice({
     },
 
     getBorderDetails(state, { payload }) {
-      const { borders } = payload;
-      state.detailOnClick = borders;
+      state.detailOnClick = payload;
 
       const borderDetails = (allCountries) => {
-        if (!borders) return;
+        if (!payload) return;
         const extractBorderDetails = allCountries.filter((country) =>
-          borders.some((border) => border === country.cca3),
+          payload.some((border) => border === country.cca3),
         );
         return extractBorderDetails;
       };
