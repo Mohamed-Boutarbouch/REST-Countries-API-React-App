@@ -14,14 +14,21 @@ const initialState = {
   error: null,
 };
 
-export const fetchCountries = createAsyncThunk('countries/fetchCountries', async () => {
-  try {
-    const { data } = await axios(URL);
-    return data;
-  } catch (error) {
-    return error.massage;
-  }
-});
+export const fetchCountries = createAsyncThunk(
+  'countries/fetchCountries',
+  async (_, { rejectWithValue }) => {
+    try {
+      const { data } = await axios(URL);
+      return data;
+    } catch (error) {
+      if (!error.response) {
+        throw error;
+      }
+
+      return rejectWithValue(error.response.data);
+    }
+  },
+);
 
 const countriesSlice = createSlice({
   name: 'countries',

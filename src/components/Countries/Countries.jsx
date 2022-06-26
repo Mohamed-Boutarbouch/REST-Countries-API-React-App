@@ -4,9 +4,10 @@ import { Link } from 'react-router-dom';
 import { selectAllCountriesState, getBorderDetails } from '../../features/countriesSlice';
 import { selectThemeState } from '../../features/themeSlice';
 import { LoadingLightTheme, LoadingDarkTheme } from '../UI/Icons';
+import PromiseRejected from '../UI/PromiseRejected';
 
 const Countries = () => {
-  const { filterByRegion, searchInput, loading } = useSelector(selectAllCountriesState);
+  const { filterByRegion, searchInput, loading, error } = useSelector(selectAllCountriesState);
   const { isDark } = useSelector(selectThemeState);
   const dispatch = useDispatch();
 
@@ -19,6 +20,10 @@ const Countries = () => {
 
   if (loading) {
     return isDark ? <LoadingDarkTheme /> : <LoadingLightTheme />;
+  }
+
+  if (error) {
+    return <PromiseRejected />;
   }
 
   return (
